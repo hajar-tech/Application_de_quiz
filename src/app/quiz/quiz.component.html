@@ -1,10 +1,10 @@
 <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4 mt-10">
     <h2 class="text-2xl font-bold text-indigo-700 mb-4">🎯 Paramètres du Quiz</h2>
-  
+
     <!-- Select Catégorie -->
     <div>
       <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
-      <select id="category" name="category" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      <select   [(ngModel)]="selectedCategory" id="category" name="category" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
         <option value="">select a category</option>
         <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
@@ -15,7 +15,7 @@
     <!-- Select Niveau -->
     <div>
       <label for="level" class="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
-      <select id="level" name="level" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <select [(ngModel)]="selectedDifficulty"  id="level" name="level" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
         <option value="easy">Facile</option>
         <option value="medium">Moyen</option>
         <option value="hard">Difficile</option>
@@ -26,6 +26,7 @@
     <div>
       <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Nombre de questions</label>
       <input 
+      [(ngModel)]="numQuestions"
         type="number" 
         id="amount" 
         name="amount" 
@@ -38,8 +39,10 @@
   
     <!-- Bouton -->
     <div class="pt-4">
-      <button type="button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition"  (click)="fetchCategories()">
+      <button type="submit" (click)="startQuiz()"   class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition" id="start-quiz-button" >
         Lancer le quiz
       </button>
     </div>
+
   </div>
+

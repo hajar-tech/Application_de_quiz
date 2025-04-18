@@ -9,12 +9,8 @@ import { QuestionService } from '../services/question.service';
   templateUrl: './question.component.html',
   styleUrl: './question.component.css'
 })
-export class QuestionComponent implements OnInit {
-  constructor(private questionService: QuestionService) {}
- ngOnInit(): void {
-//coll the method getQuestions from the QuestionService
-    this.questionService.getQuestions();
-  }
+export class QuestionComponent  {
+  
  }
 
 
