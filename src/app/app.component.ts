@@ -7,7 +7,7 @@ import { QuizComponent } from './quiz/quiz.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbareComponent,AccueilComponent,QuestionComponent,QuizComponent],
+  imports: [NavbareComponent,AccueilComponent,QuestionComponent,QuizComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
