@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { QuestionService } from '../services/question.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from 'express';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule , FormsModule],
+  imports: [CommonModule , FormsModule, RouterLink ],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css'
 })
@@ -53,8 +55,6 @@ export class QuizComponent implements OnInit {
   this.questionService.setTotalQuestions(this.numQuestions);
 //coll the method getQuestions from the QuestionService
 this.questionS.getQuestions(this.numQuestions, this.selectedCategory, this.selectedDifficulty);
-
-alert('Quiz started!');
 
 
   }

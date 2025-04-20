@@ -40,10 +40,14 @@ export class QuestionComponent implements OnInit {
  selectAnswer(choice: string) {
   this.questionService.answerQuestion(choice);
 }
+
+restartQuiz() {
+  this.questionService.restartQuiz();
+
 }
 
 
   
-  
+}
 
 

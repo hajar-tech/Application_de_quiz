@@ -19,7 +19,9 @@ export class QuestionService  {
 
  private totalQuestions = new BehaviorSubject<number>(0);
 public totalQuestions$ = this.totalQuestions.asObservable();
- 
+ amount: number = 0;
+ category: number = 0;
+  difficulty: string = '';
   constructor() { }
   
    //receive the amount , ctecogie and difficulty from the quiz component
@@ -29,7 +31,9 @@ public totalQuestions$ = this.totalQuestions.asObservable();
   // This method is used to fetch the questions from the API
   getQuestions(amount: number, category: number, difficulty: string) {
     
-
+    this.amount = amount;
+    this.category = category;
+    this.difficulty = difficulty;
      this.httpClient.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)
      .subscribe({
       next: (res: any) => {
@@ -74,6 +78,11 @@ answerQuestion(selected: string) {
 
 setTotalQuestions(count: number) {
   this.totalQuestions.next(count);
+}
+restartQuiz() {
+  // Recharge les questions avec les mêmes paramètres
+  
+  this.getQuestions(this.amount, this.category, this.difficulty);
 }
 
 }
