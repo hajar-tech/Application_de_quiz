@@ -19,7 +19,7 @@ export class QuizComponent implements OnInit {
   // par default 
   selectedCategory: number = 9; 
   selectedDifficulty: string = 'medium';
-  numQuestions: number = 10;
+ numQuestions: number = 10;
   httpClient: any;
   quizData: any;
 
@@ -49,9 +49,13 @@ export class QuizComponent implements OnInit {
 
  
  startQuiz(): void {
+ // const numQuestions = 5;
+  this.questionService.setTotalQuestions(this.numQuestions);
 //coll the method getQuestions from the QuestionService
-this.questionS.getQuestions(this.numQuestions, this.selectedCategory, this.selectedDifficulty)
+this.questionS.getQuestions(this.numQuestions, this.selectedCategory, this.selectedDifficulty);
+
 alert('Quiz started!');
+
 
   }
 }

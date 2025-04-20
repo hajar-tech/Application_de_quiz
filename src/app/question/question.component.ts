@@ -14,6 +14,7 @@ export class QuestionComponent implements OnInit {
   question: any;
   isFinished = false;
   score = 0;
+  totalQuestions = 0;
 
   constructor(private questionService: QuestionService) {}
 
@@ -26,7 +27,16 @@ export class QuestionComponent implements OnInit {
     this.questionService.quizFinished$.subscribe(finished => {
       this.isFinished = finished;
     });
- }
+
+    this.questionService.totalScore$.subscribe(score => {
+      this.score = score;
+    });
+
+    this.questionService.totalQuestions$.subscribe(count => {
+      this.totalQuestions = count;
+    });
+  }
+ 
  selectAnswer(choice: string) {
   this.questionService.answerQuestion(choice);
 }

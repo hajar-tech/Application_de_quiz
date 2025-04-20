@@ -16,6 +16,9 @@ export class QuestionService  {
  public currentQuestion$ = new BehaviorSubject<any>(null);
  public quizFinished$ = new BehaviorSubject<boolean>(false);
  public totalScore$ = new BehaviorSubject<number>(0);
+
+ private totalQuestions = new BehaviorSubject<number>(0);
+public totalQuestions$ = this.totalQuestions.asObservable();
  
   constructor() { }
   
@@ -64,6 +67,13 @@ answerQuestion(selected: string) {
     this.score++;
     this.totalScore$.next(this.score);
   }
+  this.currentIndex++;
+    this.emitCurrentQuestion();
     
 }
+
+setTotalQuestions(count: number) {
+  this.totalQuestions.next(count);
+}
+
 }
